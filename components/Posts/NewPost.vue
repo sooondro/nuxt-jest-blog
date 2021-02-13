@@ -1,7 +1,9 @@
 <template>
   <div class="mb-5 mx-auto col-8 col-md-7 col-lg-6 col-xl-5">
     <div class="mt-3 text-center">
-      <b-button @click="toggleForm" variant="secondary">{{ buttonText}}</b-button>
+      <b-button @click="toggleForm" variant="secondary">{{
+        buttonText
+      }}</b-button>
     </div>
     <b-form v-if="show" @submit.prevent="onSubmit">
       <b-form-group
@@ -33,6 +35,7 @@
       </b-form-group>
 
       <b-button type="submit" variant="primary">Submit</b-button>
+      <button @click="event"></button>
     </b-form>
   </div>
 </template>
@@ -49,14 +52,21 @@ export default {
     };
   },
   methods: {
+    event() {
+      console.log(new Date());
+    },
     toggleForm() {
+      this.show = !this.show;
+    },
+    onSubmit() {
+      this.$store.dispatch("posts/addPost", this.post);
       this.show = !this.show;
     },
   },
   computed: {
     buttonText() {
       return this.show ? "Cancel" : "Add new post";
-    }
-  }
+    },
+  },
 };
 </script>

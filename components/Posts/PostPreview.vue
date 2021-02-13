@@ -10,9 +10,6 @@
     <b-card-text>
       {{ description }}
       <br />
-      <small>{{
-        new Date(date).toLocaleString("en-GB", { timeZone: "UTC" })
-      }}</small>
     </b-card-text>
 
     <b-button href="#" variant="primary">Open post</b-button>
@@ -37,11 +34,7 @@ export default {
     description: {
       type: String,
       required: false,
-    },
-    date: {
-      type: Number,
-      required: true,
-    },
+    }
   },
   methods: {
     openPost() {

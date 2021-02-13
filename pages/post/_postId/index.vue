@@ -9,9 +9,7 @@
     <b-card-text>
       {{ description }}
       <br />
-      <small>{{
-        new Date(date).toLocaleString("en-GB", { timeZone: "UTC" })
-      }}</small>
+      <small>{{ date }}</small>
     </b-card-text>
 
     <b-button variant="primary">Edit Post</b-button>
@@ -20,15 +18,15 @@
 
 <script>
 export default {
-  data() {
-    return {
-      id: "1",
-      author: "sandro",
-      date: Date.now(),
-      description: "ovo je prvi post",
-      imageURL:
-        "https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/feynarun/php6pAiTS.jpeg",
-    };
+  async asyncData(context) {
+    try {
+      const post = await context.app.$axios.$get(
+        "/posts/" + context.params.postId + ".json"
+      );
+      return { ...post };
+    } catch (error) {
+      console.log(error);
+    }
   },
 };
 </script>
