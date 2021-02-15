@@ -16,7 +16,11 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="input-group-2" label="Your Password:" label-for="input-2">
+      <b-form-group
+        id="input-group-2"
+        label="Your Password:"
+        label-for="input-2"
+      >
         <b-form-input
           id="input-2"
           v-model="form.password"
@@ -36,14 +40,18 @@ export default {
   data() {
     return {
       form: {
-          email: '',
-          password: '',
-      }
+        email: "",
+        password: "",
+      },
     };
   },
   methods: {
     onSubmit() {
-      alert(JSON.stringify(this.form));
+      this.$store.dispatch("auth/authenticateUser", {
+        ...this.form,
+        isLogin: true,
+      });
+      this.$router.push('/');
     },
   },
 };

@@ -21,7 +21,7 @@
 export default {
   computed: {
     username() {
-      return this.$route.params.username;
+      return this.$store.getters['auth/userEmail'];
     },
   },
 };

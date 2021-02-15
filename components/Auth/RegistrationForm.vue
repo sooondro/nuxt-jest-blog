@@ -44,15 +44,20 @@ export default {
   data() {
     return {
       form: {
-          email: '',
-          password: '',
-          repeatedPassword: '',
-      }
+        email: "",
+        password: "",
+        repeatedPassword: "",
+      },
     };
   },
   methods: {
     onSubmit() {
-      alert(JSON.stringify(this.form));
+      this.$store.dispatch("auth/authenticateUser", {
+        isLogin: false,
+        email: this.form.email,
+        password: this.form.password,
+      });
+      this.$router.push('/');
     },
   },
 };

@@ -10,6 +10,9 @@
     <b-card-text>
       {{ description }}
       <br />
+      <small>{{
+        date | date
+      }}</small>
     </b-card-text>
 
     <b-button href="#" variant="primary">Open post</b-button>
@@ -34,6 +37,10 @@ export default {
     description: {
       type: String,
       required: false,
+    },
+    date: {
+      type: String,
+      required: true
     }
   },
   methods: {

@@ -35,7 +35,6 @@
       </b-form-group>
 
       <b-button type="submit" variant="primary">Submit</b-button>
-      <button @click="event"></button>
     </b-form>
   </div>
 </template>
@@ -52,14 +51,13 @@ export default {
     };
   },
   methods: {
-    event() {
-      console.log(new Date());
-    },
     toggleForm() {
       this.show = !this.show;
     },
     onSubmit() {
       this.$store.dispatch("posts/addPost", this.post);
+      this.post.description = "";
+      this.post.imageURL = "";
       this.show = !this.show;
     },
   },

@@ -8,7 +8,6 @@ export const actions = {
       const res = await context.app.$axios.$get(
         "https://nuxt-jest-blog-default-rtdb.europe-west1.firebasedatabase.app/posts.json"
       );
-      console.log(res);
       const postsArray = [];
       for (const key in res) {
         postsArray.push({ ...res[key], id: key });
