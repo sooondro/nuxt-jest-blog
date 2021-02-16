@@ -1,21 +1,18 @@
 <template>
-  <b-card
-    @click="openPost"
-    :title="author"
-    :img-src="imageURL"
-    img-alt="Image"
-    img-top
-    class="mb-4 mx-auto col-8 col-md-7 col-lg-6 col-xl-5"
-  >
-    <b-card-text>
-      {{ description }}
-      <br />
-      <small>{{
-        date | date
-      }}</small>
-    </b-card-text>
+  <b-card class="mb-4 mx-auto col-8 col-md-7 col-lg-6 col-xl-5" no-body>
+    <b-card-img @click="openPost" :src="imageURL" alt="image" top></b-card-img>
+    <b-card-body>
+      <b-card-title>
+        <nuxt-link class="title" :to="'/account/' + userId">{{ author }}</nuxt-link>
+      </b-card-title>
+      <b-card-text>
+        {{ description }}
+        <br />
+        <small>{{ date | date }}</small>
+      </b-card-text>
 
-    <b-button href="#" variant="primary">Open post</b-button>
+      <b-button href="#" variant="primary">Open post</b-button>
+    </b-card-body>
   </b-card>
 </template>
 
@@ -40,8 +37,12 @@ export default {
     },
     date: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
+    userId: {
+      type: String,
+      required: true,
+    },
   },
   methods: {
     openPost() {
@@ -50,3 +51,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  a.title {
+    color: black;
+  }
+
+  a.title:hover {
+    text-decoration: none;
+    color: black;
+  }
+</style>

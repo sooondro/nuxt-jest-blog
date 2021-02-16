@@ -1,39 +1,45 @@
 <template>
   <b-card
-    :title="post.author"
     :img-src="post.imageURL"
     img-alt="Image"
     img-top
     class="mb-4 mx-auto col-8 col-md-7 col-lg-6 col-xl-5"
+    no-body
   >
-    <div v-if="!show">
-      {{ post.description }}
-    </div>
-    <div v-else>
-      <b-form-group
-        id="description"
-        label="Edit post description:"
-        label-for="input"
-      >
-        <b-form-textarea
-          id="input"
-          v-model="editedDescription"
-          :placeholder="post.description"
-          required
-        ></b-form-textarea>
-      </b-form-group>
-    </div>
-    <div>
-      <small>{{ post.date | date }}</small>
-    </div>
-    <hr />
+    <b-card-body>
+      <h4>
+        <nuxt-link :to="'/account/' + post.userId">{{ post.author }}</nuxt-link>
+      </h4>
 
-    <b-button v-if="isOwner" variant="primary" @click="toggleForm">{{
-      buttonText
-    }}</b-button>
-    <b-button v-if="show" @click="onSubmit" variant="outline-success"
-      >Submit changes</b-button
-    >
+      <div v-if="!show">
+        {{ post.description }}
+      </div>
+      <div v-else>
+        <b-form-group
+          id="description"
+          label="Edit post description:"
+          label-for="input"
+        >
+          <b-form-textarea
+            id="input"
+            v-model="editedDescription"
+            :placeholder="post.description"
+            required
+          ></b-form-textarea>
+        </b-form-group>
+      </div>
+      <div>
+        <small>{{ post.date | date }}</small>
+      </div>
+      <hr />
+
+      <b-button v-if="isOwner" variant="primary" @click="toggleForm">{{
+        buttonText
+      }}</b-button>
+      <b-button v-if="show" @click="onSubmit" variant="outline-success"
+        >Submit changes</b-button
+      >
+    </b-card-body>
   </b-card>
 </template>
 
@@ -83,3 +89,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  a {
+    text-decoration: none;
+    color: black;
+  }
+</style>

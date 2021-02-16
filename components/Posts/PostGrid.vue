@@ -6,11 +6,12 @@
         cols="4"
         v-for="post in posts"
         :key="post.id"
+        @click="openPost(post.id)"
       >
         <b-img
           thumbnail
           fluid
-          src="https://picsum.photos/250/250/?image=54"
+          :src="post.imageURL"
           alt="Image 1"
         ></b-img>
       </b-col>
@@ -26,5 +27,10 @@ export default {
       required: true,
     },
   },
+  methods: {
+    openPost(id) {
+      this.$router.push('/post/' + id);
+    }
+  }
 };
 </script>

@@ -1,10 +1,11 @@
 <template>
   <div>
-    <NewPost v-if="isAuthenticated" />
+    <NewPost v-if="isAuthenticated"/>
     <p class="text-center" v-else>
       You must be logged in to create a new post!
       <b-button type="info" to="/auth">Login</b-button>
     </p>
+    <hr />
     <PostList :posts="loadedPosts" />
   </div>
 </template>

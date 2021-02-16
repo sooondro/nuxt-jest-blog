@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-5 mx-auto col-8 col-md-7 col-lg-6 col-xl-5">
+  <div class="mx-auto col-8 col-md-7 col-lg-6 col-xl-5">
     <div class="mt-3 text-center">
       <b-button @click="toggleForm" variant="secondary">{{
         buttonText
@@ -63,7 +63,7 @@ export default {
   },
   computed: {
     buttonText() {
-      return this.show ? "Cancel" : "Add new post";
+      return this.show ? "Cancel" : "Add a new post";
     },
   },
 };

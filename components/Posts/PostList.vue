@@ -8,6 +8,7 @@
       :date="post.date"
       :description="post.description"
       :imageURL="post.imageURL"
+      :userId = "post.userId"
     />
   </div>
 </template>
