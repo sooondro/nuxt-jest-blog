@@ -3,10 +3,14 @@
     <b-card-img @click="openPost" :src="imageURL" alt="image" top></b-card-img>
     <b-card-body>
       <b-card-title>
-        <nuxt-link class="title" :to="'/account/' + userId">{{ author }}</nuxt-link>
+        <nuxt-link class="title" :to="'/account/' + userId">{{
+          author
+        }}</nuxt-link>
       </b-card-title>
       <b-card-text>
-        {{ description }}
+        <div id="description">
+          {{ description }}
+        </div>
         <br />
         <small>{{ date | date }}</small>
       </b-card-text>
@@ -53,12 +57,12 @@ export default {
 </script>
 
 <style scoped>
-  a.title {
-    color: black;
-  }
+a.title {
+  color: black;
+}
 
-  a.title:hover {
-    text-decoration: none;
-    color: black;
-  }
+a.title:hover {
+  text-decoration: none;
+  color: black;
+}
 </style>

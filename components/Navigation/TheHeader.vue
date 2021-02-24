@@ -7,7 +7,7 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
-          <b-nav-item v-if="!isAuthenticated" to="/auth"
+          <b-nav-item id="authButton" v-if="!isAuthenticated" to="/auth"
             >Login/Sign Up</b-nav-item
           >
           <b-nav-item-dropdown v-else right>
@@ -15,7 +15,7 @@
               <em>{{ userEmail }}</em>
             </template>
             <b-dropdown-item :to="accountLink">Profile</b-dropdown-item>
-            <b-dropdown-item @click="onLogout">Sign Out</b-dropdown-item>
+            <b-dropdown-item id="logoutButton" @click="onLogout">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -24,16 +24,17 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   computed: {
-    isAuthenticated() {
-      return this.$store.getters["auth/isAuthenticated"];
-    },
+    ...mapGetters({
+      isAuthenticated: "auth/isAuthenticated",
+      userEmail: "auth/userEmail",
+      userId: "auth/userId",
+    }),
     accountLink() {
-      return "/account/" + this.$store.getters["auth/userId"];
-    },
-    userEmail() {
-      return this.$store.getters["auth/userEmail"];
+      return "/account/" + this.userId;
     },
   },
   methods: {
