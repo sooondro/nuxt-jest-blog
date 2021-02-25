@@ -1,6 +1,6 @@
 # nuxt-jest-blog
 
-# This application was built by Sandro Blavicki as a project app for RUAP.
+# This application was built by Sandro Blavicki as a project app for MTTPP.
 
 
 ## Build Setup
